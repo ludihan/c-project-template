@@ -2,8 +2,7 @@ CC      = gcc
 TARGET  = calculadora
 INCLUDE = include/
 SRC     = $(wildcard src/*.c)
-OBJ     = $(SRC:src/%.c=lib/%.o)
-#LIB    = libs externas do sistemas operacional
+LIB     = $(SRC:src/%.c=lib/%.o)
 CFLAGS = -I$(INCLUDE)       \
 		 -Wall              \
 		 -Wextra            \
@@ -16,11 +15,11 @@ CFLAGS = -I$(INCLUDE)       \
 
 all: $(TARGET)
 
-$(TARGET): $(OBJ)
-	$(CC) $(OBJ) -o $(TARGET) $(CFLAGS)
+$(TARGET): $(LIB)
+	$(CC) $(LIB) -o $(TARGET) $(CFLAGS)
 
 ./lib/%.o: ./src/%.c
 	$(CC) $< -c -o $@ $(CFLAGS)
 
 clean:
-	rm calculadora $(OBJ)
+	rm calculadora $(LIB)
