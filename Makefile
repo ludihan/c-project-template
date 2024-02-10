@@ -25,4 +25,4 @@ clean:
 	@rm $(TARGET) $(OBJ)
 
 git-update:
-	@printf "$(TARGET)\nobj/*\nlib/*" > .gitignore
+	@printf "$(TARGET)\nobj/*\nlib/*\n" > .gitignore
