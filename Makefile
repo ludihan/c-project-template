@@ -22,7 +22,7 @@ $(TARGET): $(OBJ)
 	$(CC) -c $< -o $@ $(CFLAGS)
 
 clean:
-	@rm $(TARGET) $(OBJ)
+	rm $(TARGET) $(OBJ)
 
 git-update:
 	@printf "$(TARGET)\nobj/*\nlib/*\n" > .gitignore
