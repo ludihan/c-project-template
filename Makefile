@@ -3,13 +3,13 @@ TARGET  = app
 INCLUDE = include/
 SRC     = $(wildcard src/*.c)
 OBJ     = $(SRC:src/%.c=obj/%.o)
-CFLAGS = -I$(INCLUDE)       \
-		 -Wall              \
-		 -Wextra            \
-		 -Wpedantic         \
-		 -Werror            \
-		 -fsanitize=address \
-		 -std=c99
+CFLAGS  = -I$(INCLUDE)       \
+          -Wall              \
+          -Wextra            \
+          -Wpedantic         \
+          -Werror            \
+          -fsanitize=address \
+          -std=c99
 
 .PHONY = all clean git-update
 
