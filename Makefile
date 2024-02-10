@@ -1,8 +1,8 @@
 CC      = gcc
-TARGET  = calculadora
+TARGET  = app
 INCLUDE = include/
 SRC     = $(wildcard src/*.c)
-LIB     = $(SRC:src/%.c=lib/%.o)
+OBJ     = $(SRC:src/%.c=obj/%.o)
 CFLAGS = -I$(INCLUDE)       \
 		 -Wall              \
 		 -Wextra            \
@@ -11,15 +11,18 @@ CFLAGS = -I$(INCLUDE)       \
 		 -fsanitize=address \
 		 -std=c99
 
-.PHONY = all clean
+.PHONY = all clean git-update
 
-all: $(TARGET)
+all: $(TARGET) git-update
 
-$(TARGET): $(LIB)
-	$(CC) $(LIB) -o $(TARGET) $(CFLAGS)
+$(TARGET): $(OBJ)
+	$(CC) $(OBJ) -o $(TARGET) $(CFLAGS)
 
-./lib/%.o: ./src/%.c
-	$(CC) $< -c -o $@ $(CFLAGS)
+./obj/%.o: ./src/%.c
+	$(CC) -c $< -o $@ $(CFLAGS)
 
 clean:
-	rm calculadora $(LIB)
+	@rm $(TARGET) $(OBJ)
+
+git-update:
+	@printf "$(TARGET)\nobj/*\nlib/*" > .gitignore
