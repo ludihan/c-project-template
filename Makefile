@@ -1,6 +1,6 @@
 CC      = gcc
 TARGET  = app
-INCLUDE = include/
+INCLUDE = src/include/
 SRC     = $(wildcard src/*.c)
 OBJ     = $(SRC:src/%.c=obj/%.o)
 CFLAGS  = -I$(INCLUDE)       \
