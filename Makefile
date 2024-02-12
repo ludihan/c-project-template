@@ -9,7 +9,7 @@ CFLAGS  = -I$(INCLUDE)       \
           -Wpedantic         \
           -Werror            \
           -fsanitize=address \
-          -std=c99
+          -std=c17
 
 .PHONY = all clean git-update
 
