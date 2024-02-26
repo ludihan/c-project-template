@@ -21,6 +21,9 @@ $(TARGET): $(OBJ)
 ./obj/%.o: ./src/%.c
 	$(CC) -c $< -o $@ $(CFLAGS)
 
+run: all
+	./$(TARGET)
+
 clean:
 	rm $(TARGET) $(OBJ)
 
